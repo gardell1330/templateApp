@@ -28,7 +28,7 @@ namespace Sport.Mobile.Shared
 
 			btnSave.Clicked += async(sender, e) =>
 			{
-				if(string.IsNullOrWhiteSpace(ViewModel.Athlete.Alias))
+				if(string.IsNullOrWhiteSpace("Test"))
 				{
 					"Please enter an alias.".ToToast(ToastNotificationType.Warning);
 					return;
@@ -38,13 +38,13 @@ namespace Sport.Mobile.Shared
 				success = await ViewModel.SaveAthlete();
 
 				//Will get offline sync conflict errors for all but one device, ignore and proceed if running in XTC
-				if(App.Instance.CurrentAthlete.Email.StartsWith("rob.testcloud"))
+				//if(App.Instance.CurrentAthlete.Email.StartsWith("rob.testcloud"))
 					success = true;
 
 				if(success)
 				{
 					if(OnSave != null)
-						OnSave();
+						//OnSave();
 
 					await profileStack.LayoutTo(new Rectangle(0, Content.Width * -1, profileStack.Width, profileStack.Height), App.AnimationSpeed, Easing.SinIn);
 					await label1.FadeTo(0, App.AnimationSpeed, Easing.SinIn);

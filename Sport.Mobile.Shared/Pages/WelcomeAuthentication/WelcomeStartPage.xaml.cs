@@ -19,15 +19,15 @@ namespace Sport.Mobile.Shared
 
 			btnAuthenticate.Clicked += async(sender, e) =>
 			{
-				await ViewModel.Authenticate();
+				//await ViewModel.Authenticate();
 
-				if(App.Instance.CurrentAthlete != null)
-				{
+				//if(App.Instance.CurrentAthlete != null)
+				//{
 					await label1.FadeTo(0, App.AnimationSpeed, Easing.SinIn);
 					await label2.FadeTo(0, App.AnimationSpeed, Easing.SinIn);
 					await buttonStack.FadeTo(0, App.AnimationSpeed, Easing.SinIn);
 					await Navigation.PushAsync(new SetAliasPage());
-				}
+				//}
 			};
 		}
 
