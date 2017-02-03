@@ -15,15 +15,16 @@ namespace Sport.Mobile.Shared
 		public SetAliasPage()
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
-			ViewModel.AthleteId = App.Instance.CurrentAthlete.Id;
-
-			Initialize();
+            //ViewModel.AthleteId = App.Instance.CurrentAthlete.Id;
+            ViewModel.Athlete= new Athlete { Id = "test", ProfileImageUrl = "https://lh5.googleusercontent.com/-QCciiJnHHO0/AAAAAAAAAAI/AAAAAAAASDU/X6mqWTqG7SE/photo.jpg?sz=50" };
+            
+            Initialize();
 		}
 
 		protected override void Initialize()
 		{
 			InitializeComponent();
-			Title = "Athlete Alias";
+			Title = "Athlete Alias";            
 			profileStack.Opacity = 0;
 
 			btnSave.Clicked += async(sender, e) =>
@@ -43,19 +44,19 @@ namespace Sport.Mobile.Shared
 
 				if(success)
 				{
-					if(OnSave != null)
-						//OnSave();
-
-					await profileStack.LayoutTo(new Rectangle(0, Content.Width * -1, profileStack.Width, profileStack.Height), App.AnimationSpeed, Easing.SinIn);
+				    if (OnSave != null)
+				        //OnSave();
+				    
+                    await profileStack.LayoutTo(new Rectangle(0, Content.Width * -1, profileStack.Width, profileStack.Height), App.AnimationSpeed, Easing.SinIn);
 					await label1.FadeTo(0, App.AnimationSpeed, Easing.SinIn);
 					await aliasBox.FadeTo(0, App.AnimationSpeed, Easing.SinIn);
 					await label2.FadeTo(0, App.AnimationSpeed, Easing.SinIn);
 					await buttonStack.FadeTo(0, App.AnimationSpeed, Easing.SinIn);
 
 					var page = new EnablePushPage();
-					page.ViewModel.AthleteId = ViewModel.AthleteId;
-
-					await Navigation.PushAsync(page);
+                    //page.ViewModel.AthleteId = ViewModel.AthleteId;
+                    page.ViewModel.Athlete = new Athlete { Id = "test", ProfileImageUrl = "https://lh5.googleusercontent.com/-QCciiJnHHO0/AAAAAAAAAAI/AAAAAAAASDU/X6mqWTqG7SE/photo.jpg?sz=50" };
+                    await Navigation.PushAsync(page);
 				}
 			};
 		}

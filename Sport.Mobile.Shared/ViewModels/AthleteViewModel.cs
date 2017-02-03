@@ -25,18 +25,19 @@ namespace Sport.Mobile.Shared
 
 		public Athlete Athlete
 		{
-			get
-			{
-				if(_athlete == null && AthleteId != null)
-				{
-					Task.Run(async () =>
-					{
-						_athlete = await AzureService.Instance.AthleteManager.Table.LookupAsync(AthleteId);
-					}).Wait();
-				}
-				return _athlete;
-			}
-		}
+            //get
+            //{
+            //	if(_athlete == null && AthleteId != null)
+            //	{
+            //		Task.Run(async () =>
+            //		{
+            //			_athlete = await AzureService.Instance.AthleteManager.Table.LookupAsync(AthleteId);
+            //		}).Wait();
+            //	}
+            //	return _athlete;
+            //}
+		    get; set;
+        }
 
 		public override void NotifyPropertiesChanged([CallerMemberName] string caller = "")
 		{
